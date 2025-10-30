@@ -27,31 +27,89 @@
         }
 
         /* Header Styles */
-        .top-bar {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 10px 0;
-            font-size: 14px;
+        .py-1 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
         }
 
-        .top-bar .container {
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
+            padding: 0 15px;
         }
 
-        .top-bar-item {
+        .row {
             display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .no-gutters {
+            margin: 0;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .align-items-center {
             align-items: center;
-            gap: 8px;
+        }
+
+        .align-items-start {
+            align-items: flex-start;
+        }
+
+        .col-lg-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .col-md {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .col-md-5 {
+            flex: 0 0 41.666667%;
+            max-width: 41.666667%;
+            padding: 0 15px;
+        }
+
+        .pr-4 {
+            padding-right: 1.5rem;
+        }
+
+        .topper {
+            font-size: 13px;
+            color: var(--white);
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .text-lg-right {
+            text-align: right;
         }
 
         /* Navigation */
-        nav {
+        nav.navbar {
             background-color: var(--dark-color);
             position: sticky;
             top: 0;
@@ -59,17 +117,18 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             min-height: 70px;
         }
 
-        .logo {
+        .navbar-brand {
             color: var(--white);
             font-size: 24px;
             font-weight: bold;
@@ -77,18 +136,49 @@
             transition: color 0.3s;
         }
 
-        .logo:hover {
+        .navbar-brand:hover {
             color: var(--primary-color);
         }
 
-        .nav-menu {
+        .navbar-toggler {
+            display: none;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--white);
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        #menu-checkbox {
+            display: none;
+        }
+
+        .navbar-collapse {
+            display: flex;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .navbar-nav {
             display: flex;
             list-style: none;
             gap: 5px;
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
-        .nav-menu a {
+        .ml-auto {
+            margin-left: auto;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
             color: var(--white);
             text-decoration: none;
             padding: 10px 20px;
@@ -97,29 +187,70 @@
             border-radius: 4px;
         }
 
-        .nav-menu a:hover,
-        .nav-menu .active a {
+        .nav-link:hover,
+        .nav-item.active .nav-link {
             background-color: var(--primary-color);
         }
 
-        .cart-icon {
-            background-color: var(--primary-color);
-            padding: 10px 20px;
-            border-radius: 4px;
+        /* Dropdown */
+        .dropdown {
+            position: relative;
         }
 
-        /* Mobile Menu Toggle */
-        .menu-toggle {
+        #dropdown-toggle {
             display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 24px;
+        }
+
+        .dropdown-toggle {
             cursor: pointer;
         }
 
-        #menu-checkbox {
-            display: none;
+        .dropdown-toggle::after {
+            content: " ▼";
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+        }
+
+        #dropdown-toggle:checked ~ .dropdown-menu,
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--light-bg);
+        }
+
+        .cta-colored .nav-link {
+            background-color: var(--primary-color);
+        }
+
+        .cta-colored .nav-link:hover {
+            background-color: #6d9639;
         }
 
         /* Hero Section */
@@ -522,13 +653,13 @@
             justify-content: center;
             color: var(--white);
             text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
             z-index: 999;
         }
 
-        .scroll-top.visible {
-            opacity: 1;
+        .scroll-top:hover {
+            background-color: #6d9639;
+            transform: scale(1.1);
         }
 
         /* Responsive */
@@ -592,40 +723,61 @@
         }
     </style>
 </head>
-<body>
+<body id="top" class="goto-here">
     <!-- Top Bar -->
-    <div class="top-bar">
+    <div class="py-1 bg-primary">
         <div class="container">
-            <div class="top-bar-item">
-                <span>📞</span>
-                <span>+ 1235 2355 98</span>
-            </div>
-            <div class="top-bar-item">
-                <span>✉️</span>
-                <span>fiveT@email.com</span>
-            </div>
-            <div class="top-bar-item">
-                <span>3-5 Business days delivery & Free Returns</span>
+            <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+                <div class="col-lg-12 d-block">
+                    <div class="row d-flex">
+                        <div class="col-md pr-4 d-flex topper align-items-center">
+                            <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                            <span class="text">+ 1235 2355 98</span>
+                        </div>
+                        <div class="col-md pr-4 d-flex topper align-items-center">
+                            <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                            <span class="text">fiveT@email.com</span>
+                        </div>
+                        <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+                            <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
+    
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="index.html" class="logo">Vegefoods</a>
-            <label for="menu-checkbox" class="menu-toggle">☰</label>
-            <input type="checkbox" id="menu-checkbox">
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li class="active"><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html" class="cart-icon">🛒 [0]</a></li>
+    
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Vegefoods</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item" href="shop.html">Shop</a>
+                        <a class="dropdown-item" href="product-single.html">Single Product</a>
+                        <a class="dropdown-item" href="cart.html">Cart</a>
+                        <a class="dropdown-item" href="checkout.html">Checkout</a>
+                    </div>
+                </li>
+                <li class="nav-item active"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+
             </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+    <!-- END nav -->
 
     <!-- Hero Section -->
     <section class="hero">
@@ -822,23 +974,6 @@
         </div>
     </footer>
 
-    <a href="#" class="scroll-top" id="scrollTop">↑</a>
-
-    <script>
-        // Scroll to top functionality
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.getElementById('scrollTop');
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
-
-        document.getElementById('scrollTop').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
+    <a href="#top" class="scroll-top">↑</a>
 </body>
 </html>
